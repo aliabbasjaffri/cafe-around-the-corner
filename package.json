@@ -21,11 +21,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint '**/*.tsx' --ignore-pattern node_modules/"
+    "lint": "npx eslint --fix 'src/**/*.{ts,tsx}' --ignore-pattern node_modules/"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "npm run lint && pretty-quick --staged"
     }
   },
   "eslintConfig": {
