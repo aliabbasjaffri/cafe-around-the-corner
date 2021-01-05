@@ -2,8 +2,8 @@
     "settings": {
         "import/resolver": {
           "node": {
-            "extensions": [".js", ".jsx", ".ts", ".tsx"]
-          }
+                "extensions": [".ts", ".tsx"]
+            }
         }
     },
     "env": {
@@ -35,29 +35,25 @@
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "jsx-a11y/href-no-hash": ["off"],
-        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+        "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
         "import/extensions": [
             "error",
             "ignorePackages",
             {
-              "js": "never",
-              "jsx": "never",
               "ts": "never",
               "tsx": "never"
             }
         ],
-        "max-len": [ "warn",
-            {
-                "code": 80,
-                "tabWidth": 2,
-                "comments": 80,
-                "ignoreComments": false,
-                "ignoreTrailingComments": true,
-                "ignoreUrls": true,
-                "ignoreStrings": true,
-                "ignoreTemplateLiterals": true,
-                "ignoreRegExpLiterals": true
-            }
-        ]
+        "max-len": [ "warn", {
+            "code": 80,
+            "tabWidth": 2,
+            "comments": 80,
+            "ignoreComments": false,
+            "ignoreTrailingComments": true,
+            "ignoreUrls": true,
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": true,
+            "ignoreRegExpLiterals": true
+        }]
     }
 }
