@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { themeColors } from '../config/color-config';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: themeColors.primary.main,
+      light: themeColors.primary.light,
+      dark: themeColors.primary.dark,
+      contrastText: ''
+    },
+    secondary: {
+      main: themeColors.secondary.main,
+      light: themeColors.secondary.light,
+      dark: themeColors.secondary.dark,
+      contrastText: themeColors.secondary.contrastText
+    }
+  }
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <header className="Cafe around the corner" />
+      <body>
+        <p>Hello to cafe around the corner</p>
+      </body>
+    </ThemeProvider>
   );
 }
 
