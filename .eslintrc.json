@@ -34,6 +34,7 @@
     ],
     "rules": {
         "no-use-before-define": "off",
+        "react/destructuring-assignment": 0,
         "import/prefer-default-export": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "jsx-a11y/href-no-hash": ["off"],
