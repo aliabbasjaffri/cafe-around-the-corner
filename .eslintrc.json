@@ -1,6 +1,7 @@
 {
     "settings": {
         "import/resolver": {
+          "typescript": {},
           "node": {
                 "extensions": [".ts", ".tsx"]
             }
@@ -33,6 +34,7 @@
     ],
     "rules": {
         "no-use-before-define": "off",
+        "import/prefer-default-export": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "jsx-a11y/href-no-hash": ["off"],
         "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
