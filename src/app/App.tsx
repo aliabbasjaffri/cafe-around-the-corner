@@ -3,7 +3,7 @@ import { Container, Grid } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { theme } from '../config/theme';
-import CafeCard from '../components/cafe';
+import CafeCard, { ICafeCard } from '../components/cafe';
 
 const data = {
   initial: 'C',
@@ -16,36 +16,27 @@ const data = {
     "Really nice cafe around the corner. We're glad to serve you day and night with our utmost hospitality. Please come again soon!"
 };
 
-const arraylist = [data];
+const arraylist = [data, data, data, data];
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
         <Container>
-          <Grid
-            container
-            xs={12}
-            sm={6}
-            direction="column"
-            justify="space-between"
-            alignItems="stretch"
-          >
-            <Grid item xs={12}>
-              {arraylist.map((_data: any) => {
-                return (
-                  <CafeCard
-                    key={_data.name}
-                    initial={_data.initial}
-                    distance={_data.distance}
-                    image={_data.image}
-                    name={_data.name}
-                    open={_data.open}
-                    shortDescription={_data.shortDescription}
-                  />
-                );
-              })}
-            </Grid>
+          <Grid container spacing={3}>
+            {arraylist.map((_data: ICafeCard) => (
+              <Grid item xs={6} sm={6} key={_data.name}>
+                <CafeCard
+                  key={_data.name}
+                  initial={_data.initial}
+                  distance={_data.distance}
+                  image={_data.image}
+                  name={_data.name}
+                  open={_data.open}
+                  shortDescription={_data.shortDescription}
+                />
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Router>

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -12,60 +13,71 @@ import { red } from '@material-ui/core/colors';
 // import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-type CafeProps = {
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    base: {
+      maxWidth: 480
+    },
+    media: {
+      height: 0,
+      paddingTop: '56.25%'
+    },
+    expand: {
+      transform: 'rotate(0deg)',
+      marginLeft: 'auto',
+      transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest
+      })
+    },
+    expandOpen: {
+      transform: 'rotate(180deg)'
+    },
+    avatar: {
+      backgroundColor: red[500]
+    }
+  })
+);
+
+export interface ICafeCard {
   initial: string;
   distance: string;
   image: string;
   name: string;
   open: boolean;
   shortDescription: string;
-};
+}
 
-type CafeState = {};
+export default function CafeCard(props: ICafeCard) {
+  const style = useStyles();
 
-export default class CafeCard extends Component<CafeProps, CafeState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {};
-  }
+  const [data, setData] = useState<ICafeCard>(props);
 
-  componentDidMount() {
-    this.setState({});
-  }
+  useEffect(() => {
+    setData(props);
+  });
 
-  render() {
-    return (
-      <Card style={{ maxWidth: 640 }}>
-        <CardHeader
-          avatar={
-            <Avatar aria-label="cafe" style={{ backgroundColor: red[500] }}>
-              {this.props.initial}
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title={this.props.name}
-          subheader={this.props.distance}
-        />
-        <CardMedia
-          style={{ height: 0, paddingTop: '56.25%' }}
-          image={this.props.image}
-          title={this.props.name}
-        />
-        <CardContent>
-          <Typography
-            noWrap
-            variant="body2"
-            color="textSecondary"
-            component="p"
-          >
-            {this.props.shortDescription}
-          </Typography>
-        </CardContent>
-      </Card>
-    );
-  }
+  return (
+    <Card className={style.base}>
+      <CardHeader
+        avatar={
+          <Avatar aria-label="cafe" className={style.avatar}>
+            {data.initial}
+          </Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title={data.name}
+        subheader={data.distance}
+      />
+      <CardMedia className={style.media} image={data.image} title={data.name} />
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {data.shortDescription}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
 }
